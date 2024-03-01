@@ -16,7 +16,7 @@ import pg from 'pg';
 
 const connectionString = 'postgresql://kimobrian254@localhost:5432/nextjs';
 
-const pool = new pg.Pool({
+export const pool = new pg.Pool({
   connectionString,
 });
 
@@ -182,7 +182,7 @@ export async function fetchInvoiceById(id: string) {
         invoices.amount,
         invoices.status
       FROM invoices
-      WHERE invoices.id = ${id};
+      WHERE invoices.id = '${id}';
     `);
     await client.release();
 
